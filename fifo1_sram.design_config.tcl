@@ -32,43 +32,43 @@ set innovus_enable_manual_macro_placement 0
 
 set rtl_list [list ../rtl/$top_design.sv ]
 # include corners for standard cells, memories, and IOs. 
-set slow_corner "ss0p72v125c ss0p72v125c_1p62v ss0p6v125c_i0p6v ss0p6v125c"
-set fast_corner "ff0p88v125c ff0p88v125c_1p96v ff0p7v125c_i0p88v ff0p7v125c"
+set slow_corner "ss0p72v125c ss0p72v125c_1p62v ss0p6v125c_i0p6v"
+set fast_corner "ff0p88v125c ff0p88v125c_1p96v ff0p7v125c_i0p88v"
 set synth_corners $slow_corner
 set synth_corners_slow $slow_corner
 set synth_corners_fast $fast_corner
 set slow_metal Cmax_125
 set fast_metal Cmax_125
-set lib_types "stdcell_hvt/db_nldm stdcell_rvt/db_nldm stdcell_lvt/db_nldm \
-SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/db_nldm \
-SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/dual \
-SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/single \
-SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/logic_synth"
+set lib_types "$lib_dir/stdcell_hvt/db_nldm $lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm \
+$lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/db_nldm \
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/dual \
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/single \
+$lib_dir/SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/logic_synth"
 # Get just the main standard cells, srams and IOs
 set sub_lib_type "saed14?vt_ saed14sram_ saed14io_wb_ saed14pll_"
 
-set ndm_types {stdcell_hvt/ndm/saed14hvt_frame_only.ndm 
-stdcell_rvt/ndm/saed14rvt_frame_only.ndm
-stdcell_lvt/ndm/saed14lvt_frame_only.ndm
-SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_1rw_frame_only.ndm
-SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_2rw_frame_only.ndm
-SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/ndm/saed14pll_frame_only.ndm
-SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/ndm/saed14io_wb_frame_only.ndm}
+set ndm_types {$lib_dir/stdcell_hvt/ndm/saed14hvt_frame_only.ndm 
+$lib_dir/stdcell_rvt/ndm/saed14rvt_frame_only.ndm
+$lib_dir/stdcell_lvt/ndm/saed14lvt_frame_only.ndm
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_1rw_frame_only.ndm
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_2rw_frame_only.ndm
+$lib_dir/SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/ndm/saed14pll_frame_only.ndm
+$lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/ndm/saed14io_wb_frame_only.ndm}
 set sub_ndm_type "*.ndm"
 
-set lef_types {stdcell_hvt/lef 
-stdcell_rvt/lef
-stdcell_lvt/lef
-saed14nm/SAED14nm_EDK_SRAM_v_05072020/lib/sram/lef/
-SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/lef
-SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/lef
+set lef_types {$lib_dir/stdcell_hvt/lef 
+$lib_dir/stdcell_rvt/lef
+$lib_dir/stdcell_lvt/lef
+$lib_dir/saed14nm/SAED14nm_EDK_SRAM_v_05072020/lib/sram/lef/
+$lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/lef
+$lib_dir/SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/lef
 }
 set sub_lef_type "saed14nm_?vt_*.lef saed14_sram_*.lef saed14io_std_wb saed14_PLL.lef"
 
-set mwlib_types {stdcell_hvt/milkyway 
-stdcell_rvt/milkyway 
-stdcell_lvt/milkyway  
-SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/milkyway
+set mwlib_types {$lib_dir/stdcell_hvt/milkyway 
+$lib_dir/stdcell_rvt/milkyway 
+$lib_dir/stdcell_lvt/milkyway  
+$lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/milkyway
 }
 set sub_mwlib_type "saed14nm_?vt_* saed14sram_* saed14io_wb_* saed14pll_*"
 

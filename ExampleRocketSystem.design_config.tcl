@@ -1,4 +1,4 @@
-set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK
+set lib_dir /pkgs/synopsys/2020/saed14nm
 
 # Decoder ring for the libraries
 # You will need to follow another example or look in the library directories to understand.
@@ -27,14 +27,39 @@ set design_size { 1850 1380  }
 set design_io_border 10
 set dc_floorplanning 1
 set rtl_list [list ../rtl/$top_design.sv ]
-set slow_corner "ss0p75v125c ss0p95v125c_2p25v ss0p95v125c"
-set fast_corner "ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c"
+set slow_corner "ss0p72v125c  "
+set fast_corner "ff0p88v125c  "
 set synth_corners $slow_corner
+set enable_dft 0
 set slow_metal Cmax_125
 set fast_metal Cmax_125
-set lib_types "stdcell_hvt stdcell_rvt stdcell_lvt sram_lp"
-# Get just the main standard cells, srams
-set sub_lib_type "saed32?vt_ saed32sram_"
+set lib_types "$lib_dir/stdcell_hvt/db_nldm $lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm \
+$lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/db_nldm \
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/dual \
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/single \
+$lib_dir/SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/logic_synth"
+set sub_lib_type "saed14?vt_ saed14sram_ "
+
+set ndm_types {$lib_dir/stdcell_hvt/ndm/saed14hvt_frame_only.ndm 
+$lib_dir/stdcell_rvt/ndm/saed14rvt_frame_only.ndm
+$lib_dir/stdcell_lvt/ndm/saed14lvt_frame_only.ndm
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_1rw_frame_only.ndm
+$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/ndm/saed14_sram_2rw_frame_only.ndm}
+set sub_ndm_type "*.ndm"
+
+set lef_types {$lib_dir/stdcell_hvt/lef 
+$lib_dir/stdcell_rvt/lef
+$lib_dir/stdcell_lvt/lef
+$lib_dir/saed14nm/SAED14nm_EDK_SRAM_v_05072020/lib/sram/lef/
+}
+set sub_lef_type "saed14nm_?vt_*.lef saed14_sram_*.lef saed14io_std_wb saed14_PLL.lef"
+
+set mwlib_types {$lib_dir/stdcell_hvt/milkyway 
+$lib_dir/stdcell_rvt/milkyway 
+$lib_dir/stdcell_lvt/milkyway  
+}
+set sub_mwlib_type "saed14nm_?vt_* saed14sram_* saed14io_wb_* saed14pll_*"
 
 #set topdir /u/$env(USER)/PSU_RTL2GDS
 set topdir [ lindex [ regexp -inline "(.*)\(syn\|pt\|apr\)" [pwd] ] 1 ]
+

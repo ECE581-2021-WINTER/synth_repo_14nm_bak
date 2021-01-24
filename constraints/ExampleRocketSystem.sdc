@@ -1,5 +1,5 @@
 
-if { $synopsys_program_name == "icc2_shell" } {
+if { [info exists synopsys_program_name ] && ($synopsys_program_name == "icc2_shell") } {
     puts " Creating ICC2 MCMM "
     create_mode func
     create_corner slow
@@ -16,7 +16,7 @@ if { $synopsys_program_name == "icc2_shell" } {
     #set_scenario_status  default -active false
     set_scenario_status func_slow -active true -hold true -setup true
 } else {
-    set_operating_condition ss0p75v125c -library saed32lvt_ss0p75v125c
+    set_operating_condition ss0p72v125c -library saed14lvt_ss0p72v125c
 }
 
 puts " Setting up normal constraints "
@@ -26,7 +26,7 @@ set_clock_latency -source 0.9 [get_clocks clock]
 set_clock_transition 0.13 [get_clocks clock]
 set_input_delay 0.0016 [all_inputs] -clock clock
 set_output_delay 0.0016 [all_outputs] -clock clock
-set_driving_cell -lib_cell NBUFFX8_HVT [all_inputs]
+set_driving_cell -lib_cell SAEDHVT14_INV_1 [all_inputs]
 set_load 0.009 [all_outputs]
 set_clock_uncertainty -hold 0.001 [get_clocks clock]
 # clock skew of around 100ps

@@ -5,36 +5,7 @@ set search_path ""
 # /pkgs/synopsys/2020/saed14nm/stdcell_rvt/db_nldm
 foreach i $lib_types {
 
-	switch $i {
-		stdcell_hvt {
-			lappend search_path $lib_dir/$i/db_nldm
-		}
-
-		stdcell_rvt {
-			lappend search_path $lib_dir/$i/db_nldm
-		}
-
-		stdcell_lvt {
-			lappend search_path $lib_dir/$i/db_nldm
-		}
-
-		SAED14nm_EDK_IO_v_06052019 {
-			lappend search_path $lib_dir/$i/SAED14_EDK/lib/io_std/db_nldm
-			lappend search_path $lib_dir/$i/SAED14_EDK/lib/io_sp/db_nldm
-		} 	
-
-		SAED14nm_EDK_PLL_v_06052019 {
-			lappend search_path $lib_dir/$i/SAED14_EDK/lib/pll/logic_synth
-		} 
-
-		SAED14nm_EDK_SRAM_v_05072020 {
-			lappend search_path $lib_dir/$i/lib/sram/logic_synth/dual
-			lappend search_path $lib_dir/$i/lib/sram/logic_synth/single
-		}
-
-                default {
-                        lappend search_path $lib_dir/$i
-                }
+                        lappend search_path $i
 	}
 
 }

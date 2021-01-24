@@ -7,7 +7,7 @@
 # /          $lib_dir                   /lib/ $lib_type /db_nldm
 # The variables are defined in design_config.tcl
 set search_path ""
-foreach i $lib_types { lappend search_path $lib_dir/$i }
+foreach i $lib_types { lappend search_path $i }
 
 # Smartly find all the libraries you need
 # Will end up with sometihng like this: 
@@ -32,7 +32,7 @@ foreach i $search_path {
 set lef_path ""
 foreach k $lef_types {
   foreach m $sub_lef_type {
-    foreach j [glob -nocomplain $lib_dir/$k/$m ] {
+    foreach j [glob -nocomplain $k/$m ] {
       lappend lef_path  $j 
     }
   }
