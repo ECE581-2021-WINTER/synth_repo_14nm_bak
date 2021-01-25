@@ -36,9 +36,9 @@ set fast_metal Cmax_125
 set lib_types "$lib_dir/stdcell_hvt/db_nldm $lib_dir/stdcell_rvt/db_nldm $lib_dir/stdcell_lvt/db_nldm \
 $lib_dir/SAED14nm_EDK_IO_v_06052019/SAED14_EDK/lib/io_std/db_nldm \
 $lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/dual \
-$lib_dir/SAED14nm_EDK_SRAM_v_05072020/lib/sram/logic_synth/single \
+/u/bcruik2/14nm_lib/sram_1rw \
 $lib_dir/SAED14nm_EDK_PLL_v_06052019/SAED14_EDK/lib/pll/logic_synth"
-set sub_lib_type "saed14?vt_ saed14sram_ "
+set sub_lib_type "saed14?vt_ saed14sram_ saed14sram_1rw_"
 
 set ndm_types {$lib_dir/stdcell_hvt/ndm/saed14hvt_frame_only.ndm 
 $lib_dir/stdcell_rvt/ndm/saed14rvt_frame_only.ndm
